@@ -1,32 +1,47 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Header/>
     <router-view/>
+    <Popup v-if="$store.getters.popupStatus"/>
+    <Background/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import Header from "@/components/Header";
+import Popup from "@/components/global/Popup";
+import Background from "@/components/global/Background";
+export default {
+  components: {Background, Popup, Header},
+  mounted() {
+    this.$store.watch(
+        (state) => state.CHANGE_COLOR_FLAG,
+        (newValue) => {
+          if (newValue){
+            document.body.classList.toggle('dark-theme')
+          }
+        }
+    )
   }
 }
+</script>
+
+<style lang="sass">
+
+body
+  font-family: IBMPlexSans
+  color: $white
+  position: relative
+  min-height: 100vh
+  padding-top: calc(100px + 145px)
+  box-sizing: border-box
+  background: $body-background
+  &.dark-theme
+    background: #ffffff
+  .background-circle
+    transition: opacity 1.5s
+    position: fixed
+    top: 0
+    right: 0
+    z-index: 3
 </style>
