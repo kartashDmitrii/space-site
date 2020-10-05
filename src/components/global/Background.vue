@@ -36,8 +36,10 @@ export default {
   },
   methods:{
     changeBackgroundCanvas(){
-      this.$refs['background'].width = document.body.scrollWidth
-      this.$refs['background'].height = document.body.scrollHeight
+      let body = document.body;
+
+      this.$refs['background'].width = body.scrollWidth
+      this.$refs['background'].height = body.scrollHeight
     },
     drawFullCircle(color){
       this.$store.commit('changeAnimationFlag', false)
@@ -141,7 +143,5 @@ export default {
     position: absolute
     top: 0
     left: 0
-    width: 100%
-    height: 100%
     z-index: 0
 </style>

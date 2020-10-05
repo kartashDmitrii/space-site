@@ -1,8 +1,6 @@
 <template>
   <div class="custom-button-block">
-    <a ref="button" href="#" class="custom-button">
-      {{$props.text}}
-    </a>
+    <a ref="button" :href="$props.customRef" class="custom-button">{{text}}</a>
   </div>
 </template>
 
@@ -14,7 +12,7 @@ export default {
       type: String,
       required: true
     },
-    ref: {
+    customRef: {
       type: String,
       default: '#'
     },
@@ -34,11 +32,16 @@ export default {
     }
     switch (this.$props.color){
       case 'Blue':
-        this.$refs['button'].style.setProperty('background-color','#4061F9')
+          this.btnColor = '#4061F9'
           break
       case 'Grey':
-        this.$refs['button'].style.setProperty('background-color','#737373')
+          this.btnColor = '#737373'
           break
+    }
+  },
+  data(){
+    return {
+      btnColor: ''
     }
   },
   name: "CustomButton"
@@ -46,6 +49,13 @@ export default {
 </script>
 
 <style scoped lang="sass">
+@keyframes moveInBottom
+  0%
+    opacity: 0
+    transform: translateY(30px)
+  100%
+    opacity: 1
+    transform: translateY(0)
 .custom-button-block
   display: flex
   justify-content: center
@@ -58,4 +68,27 @@ export default {
   justify-content: center
   text-decoration: none
   color: #ffffff
+  background: #4061F9
+  transition: all .2s
+  position: relative
+  animation: moveInBottom .5s ease-out .75s
+  animation-fill-mode: backwards
+  &:after
+    content: ''
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    z-index: -1
+    transition: all .4s
+    border-radius: 50%
+    background: #4061F9
+  &:hover
+    box-shadow: 0 10px 20px rgba(255, 255, 255, .2)
+    &:after
+      transform: scaleX(1.4) scaleY(1.6)
+      opacity: 0
+  &:active
+    box-shadow: 0 5px 10px rgba(255, 255, 255, .2)
 </style>
