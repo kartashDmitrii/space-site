@@ -48,7 +48,7 @@ export default {
     .desc
       height: 0
     .name:after
-      transform: rotate(-135deg)
+      transform: rotate(45deg)
 .name
   margin: 0
   font-size: 24px
@@ -66,7 +66,7 @@ export default {
     margin: auto
     border: solid #ffffff
     border-width: 0 1px 1px 0
-    transform: rotate(45deg)
+    transform: rotate(-135deg)
     transition: all .3s
 .desc
   overflow-y: hidden

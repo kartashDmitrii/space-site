@@ -67,8 +67,8 @@ export default {
   align-items: center
   justify-content: center
   text-decoration: none
-  color: #ffffff
-  background: #4061F9
+  color: $white
+  background: $button-color
   transition: all .2s
   position: relative
   animation: moveInBottom .5s ease-out .75s
@@ -83,7 +83,7 @@ export default {
     z-index: -1
     transition: all .4s
     border-radius: 50%
-    background: #4061F9
+    background: $button-color
   &:hover
     box-shadow: 0 10px 20px rgba(255, 255, 255, .2)
     &:after

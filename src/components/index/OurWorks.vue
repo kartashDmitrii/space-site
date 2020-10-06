@@ -1,7 +1,7 @@
 <template>
   <section class="agency container small-container">
     <div class="title-block">
-      <h5 class="title">Агенция</h5>
+      <h5 class="title custom-grey-text">Агенция</h5>
     </div>
     <div class="our-works">
       <SmallWorkLink v-for="(work, i) in works" :name="work.name" :date="work.date" :link="work.link" :key="i"/>
@@ -59,10 +59,6 @@ export default {
   margin-bottom: 80px
   .title
     margin: 0 55px 8px 0
-    font-weight: 300
-    font-size: 16px
-    line-height: 21px
-    color: #CACACA
 .our-works
   display: flex
   flex-direction: column

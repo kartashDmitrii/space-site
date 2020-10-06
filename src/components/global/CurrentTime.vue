@@ -35,5 +35,5 @@ export default {
   font-weight: 200
   font-size: 24px
   line-height: 31px
-  color: #CACACA
+  color: $grey-text
 </style>

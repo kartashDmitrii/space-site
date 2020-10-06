@@ -74,8 +74,6 @@ export default {
   display: flex
   height: 105px
   padding-bottom: 50px
-  border-bottom: 1px solid #4A4848
+  border-bottom: 1px solid $border-color
   align-items: flex-end
-  .time
-
 </style>

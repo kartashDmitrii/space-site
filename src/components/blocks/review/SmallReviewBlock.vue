@@ -4,7 +4,7 @@
       <img :src="require(`@/assets/img/${$props.data.image}`)" alt="alr">
     </a>
     <div class="info">
-      <p class="time">{{ $props.data.time }}</p>
+      <p class="time custom-grey-text">{{ $props.data.time }}</p>
       <a :href="$props.data['link']" class="name">{{ $props.data.name }}</a>
     </div>
   </div>
@@ -31,14 +31,10 @@ export default {
   align-items: flex-start
   justify-content: space-between
   .time
-    color: #CACACA
-    font-weight: 300
-    font-size: 16px
-    line-height: 21px
     margin: 0 80px 0 0
   .name
     text-decoration: none
-    color: #ffffff
+    color: $white
     min-width: 340px
     font-size: 26px
     line-height: 34px

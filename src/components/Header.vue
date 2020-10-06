@@ -98,7 +98,7 @@ export default {
     width: 50px
     height: 50px
     border-radius: 50%
-    background: #ffffff
+    background: $white
     margin-right: 17px
     cursor: pointer
     border: none
@@ -108,7 +108,7 @@ export default {
   .video
     width: 50px
     height: 50px
-    border: 1px solid #ffffff
+    border: 1px solid $white
     border-radius: 50%
     cursor: pointer
     background: url("~@/assets/img/svg/play.svg") center center / 10px 12px no-repeat
@@ -117,14 +117,14 @@ export default {
   .hire-us
     padding: 14px
     border-radius: 42px
-    border: 1px solid #ffffff
+    border: 1px solid $white
     display: flex
     align-items: center
     justify-content: center
     font-weight: 500
     font-size: 18px
     line-height: 23px
-    color: #ffffff
+    color: $white
     background: transparent
     cursor: pointer
     outline: none

@@ -1,7 +1,7 @@
 <template>
   <section class="agency container small-container">
     <div class="title-block">
-      <h5 class="title">Агенция</h5>
+      <h5 class="title custom-grey-text">Агенция</h5>
       <p>Занимаемся разработкой сайтов для бизнеса с 2013 года.</p>
     </div>
     <div class="text">
@@ -26,17 +26,13 @@ name: "Agency",
   display: flex
   flex-direction: column
   padding-bottom: 29px
-  border-bottom: 1px solid #4A4848
+  border-bottom: 1px solid $border-color
   margin-bottom: 150px
   .title-block
     display: flex
     align-items: flex-end
     .title
       margin: 0 55px 8px 0
-      font-weight: 300
-      font-size: 16px
-      line-height: 21px
-      color: #CACACA
     p
       margin: 0
       font-size: 38px

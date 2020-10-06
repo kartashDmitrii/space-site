@@ -86,9 +86,9 @@ export default {
       this.yCord = event.clientY
     },
     buildStars(){
-      let starCount = document.body.scrollHeight / 20,
-          y = document.body.scrollHeight,
-          x = document.body.scrollWidth,
+      let starCount = this.$refs['background'].height / 15,
+          y = this.$refs['background'].height,
+          x = this.$refs['background'].width,
           maxSize = 7;
       for (let i = 0; i < starCount; i++){
 
@@ -143,5 +143,7 @@ export default {
     position: absolute
     top: 0
     left: 0
+    width: 100%
+    height: 100%
     z-index: 0
 </style>

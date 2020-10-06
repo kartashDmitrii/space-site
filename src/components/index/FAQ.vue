@@ -1,10 +1,13 @@
 <template>
   <div class="faq container small-container">
-    <div class="column">
-      <SmallFAQ v-for="(faq,i) in evenFAQ" :desc="faq" :key="i"/>
-    </div>
-    <div class="column">
-      <SmallFAQ v-for="(faq,i) in oddFAQ" :desc="faq" :key="i"/>
+    <h4 class="title custom-grey-text">Важно!</h4>
+    <div class="faq-grid">
+      <div class="column">
+        <SmallFAQ v-for="(faq,i) in evenFAQ" :desc="faq" :key="i"/>
+      </div>
+      <div class="column">
+        <SmallFAQ v-for="(faq,i) in oddFAQ" :desc="faq" :key="i"/>
+      </div>
     </div>
   </div>
 </template>
@@ -76,7 +79,9 @@ name: "FAQ",
 </script>
 
 <style scoped lang="sass">
-.faq
+.title
+  margin-bottom: 80px
+.faq-grid
   display: grid
   grid-template-columns: 1fr 1fr
   grid-column-gap: 30px
@@ -88,5 +93,5 @@ name: "FAQ",
     grid-template-columns: 1fr
     grid-auto-rows: auto
     .elem:last-child
-      border-bottom: 1px solid #ffffff
+      border-bottom: 1px solid $white
 </style>

@@ -1,6 +1,6 @@
 <template>
   <section class="reviews container small-container">
-    <h5 class="title">Агенция</h5>
+    <h5 class="title custom-grey-text">Агенция</h5>
     <div class="review-gid" :class="{'small-margin' : reviews.length % 2 === 0}">
       <div class="review-block" v-for="i in reviewsLength" :key="i">
         <SmallReviewBlock v-if="i !== 2" :data=" i > 2 ? reviews[i-2] : reviews[i - 1]"></SmallReviewBlock>
@@ -53,14 +53,10 @@ name: "Reviews",
 <style scoped lang="sass">
 .reviews
   padding-bottom: 150px
-  border-bottom: 1px solid #4A4848
+  border-bottom: 1px solid $border-color
   margin-bottom: 150px
 .title
   margin: 0 0 80px
-  font-weight: 300
-  font-size: 16px
-  line-height: 21px
-  color: #CACACA
 .review-gid
   display: grid
   grid-template-columns: 1fr 1fr

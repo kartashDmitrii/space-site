@@ -32,6 +32,7 @@ export default {
   display: grid
   grid-template-columns: 345px auto
   grid-column-gap: 145px
+  padding-bottom: 150px
 .info
   display: flex
   flex-direction: column
@@ -39,7 +40,7 @@ export default {
     font-weight: 300
     font-size: 16px
     line-height: 21px
-    color: #CACACA
+    color: $grey-text
     margin: 0 0 80px
   .contact-field
     display: flex
@@ -48,12 +49,12 @@ export default {
     .phone
       font-size: 26px
       line-height: 34px
-      color: #ffffff
+      color: $white
       margin: 0 0 15px
     .mail
       font-size: 26px
       line-height: 34px
-      color: #ffffff
+      color: $white
       margin: 0 0 24px
     .social
       display: flex
@@ -70,6 +71,6 @@ export default {
     font-weight: 300
     font-size: 13px
     line-height: 17px
-    color: #CACACA
+    color: $grey-text
     margin: 0
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="review-rating">
     <p class="rating">4.6</p>
-    <p class="desc">На основе <span>123</span> отзывов google</p>
+    <p class="desc custom-grey-text">На основе <span>123</span> отзывов google</p>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
 .review-rating
   padding: 185px 95px
   box-sizing: border-box
-  border: 5px solid #FFFFFF
+  border: 5px solid $white
   display: flex
   justify-content: center
   flex-direction: column
@@ -26,10 +26,6 @@ export default {
     line-height: 187px
     margin: 0 0 30px
   .desc
-    font-weight: 300
-    font-size: 16px
-    line-height: 21px
-    color: #ffffff
-    margin: 0
+    color: $white
     text-align: center
 </style>
