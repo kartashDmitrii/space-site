@@ -4,7 +4,7 @@
       <div class="container">
         <router-link to="/" class="logo">
           <img src="@/assets/img/logo.svg" alt="logo">
-          <p>Space-site</p>
+          <p v-if="desktopVersion">Space-site</p>
         </router-link>
         <div class="up-btn"></div>
       </div>
@@ -15,7 +15,7 @@
           <h4 class="title custom-grey-text">Ждем в гости</h4>
           <p>Street L. Rudenko, 6а. г. Kyiv, Ukraine 02140</p>
         </div>
-        <div class="social">
+        <div class="social" v-if="desktopVersion">
           <a href=""><img src="@/assets/img/svg/dark-facebook.svg" alt="fb"></a>
           <a href=""><img src="@/assets/img/svg/dark-twitter.svg" alt="tw"></a>
         </div>
@@ -24,13 +24,19 @@
         <h4 class="title custom-grey-text">Контакты</h4>
         <p class="phone">+38 (097) 355 11 77</p>
         <p class="email">info@space-site.com.ua</p>
-        <div class="social">
+        <div class="social" v-if="desktopVersion">
           <a href=""><img src="@/assets/img/svg/dark-white-telegram.svg" alt="tg"></a>
           <a href=""><img src="@/assets/img/svg/dark-white-viber.svg" alt="vb"></a>
         </div>
       </div>
+      <div class="mobile-social" v-if="!desktopVersion">
+        <a href=""><img src="@/assets/img/svg/telegram.svg" alt="tg"></a>
+        <a href=""><img src="@/assets/img/svg/viber.svg" alt="vb"></a>
+        <a href=""><img src="@/assets/img/svg/messenger.svg" alt="tg"></a>
+        <a href=""><img src="@/assets/img/svg/phone.svg" alt="vb"></a>
+      </div>
       <div class="menu">
-        <div class="links">
+        <div class="links" v-if="desktopVersion">
           <Navigations/>
           <Languages/>
         </div>
@@ -58,7 +64,12 @@ import Navigations from "@/components/global/Navigations";
 import Languages from "@/components/global/Languages";
 export default {
 name: "Foote",
-  components: {Languages, Navigations}
+  components: {Languages, Navigations},
+  computed: {
+    desktopVersion(){
+      return screen.width > 1023
+    }
+  },
 }
 </script>
 
@@ -111,11 +122,16 @@ footer
     padding-bottom: 22px
     min-height: 300px
     box-sizing: border-box
+    @media (max-width: 767px)
+      flex-direction: column
     .address
       display: flex
       flex-direction: column
       max-width: 215px
       margin-right: 30px
+      @media (max-width: 767px)
+        max-width: none
+        margin-bottom: 35px
       .content
         flex: 1
         display: flex
@@ -142,6 +158,8 @@ footer
     .contacts
       display: flex
       flex-direction: column
+      @media (max-width: 767px)
+        margin-bottom: 20px
       .title
         margin-bottom: 21px
       .phone,.email
@@ -161,6 +179,18 @@ footer
           img
             width: 100%
             height: auto
+    .mobile-social
+      display: flex
+      margin-bottom: 50px
+      a
+        width: 40px
+        height: 40px
+        margin-right: 15px
+        &:last-child
+          margin-right: 0
+        img
+          width: 100%
+          height: auto
     .menu
       flex: 1
       display: flex
@@ -174,6 +204,11 @@ footer
           margin-right: 45px
       .partners
         display: flex
+        @media (max-width: 576px)
+          width: 100%
+          border-top: 1px solid $border-color
+          padding: 24px 0
+          justify-content: center
         a
           margin-right: 18px
           &:last-child

@@ -64,6 +64,8 @@ export default {
 </script>
 
 <style scoped lang="sass">
+.hire-us
+  width: 100%
 .title
   margin-bottom: 64px
 .form-title
@@ -72,9 +74,14 @@ export default {
   line-height: 53px
   color: $white
   margin: 0 0 28px
+.form
+  display: flex
+  flex-direction: column
+  width: 100%
 form
   display: flex
   flex-direction: column
+  width: 100%
   label
     position: relative
     display: flex

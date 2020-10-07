@@ -53,6 +53,8 @@ export default {
 <style scoped lang="sass">
 .agency
   margin-bottom: 150px
+  @media (max-width: 767px)
+    margin-bottom: 100px
 .title-block
   display: flex
   align-items: flex-end

@@ -88,6 +88,9 @@ name: "FAQ",
   grid-auto-rows: auto
   align-items: flex-start
   margin-bottom: 150px
+  @media (max-width: 1023px)
+    grid-template-columns: 1fr
+    margin-bottom: 100px
   .column
     display: grid
     grid-template-columns: 1fr

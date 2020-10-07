@@ -33,10 +33,17 @@ export default {
     display: flex
     flex-direction: column
     margin-bottom: 70px
+    width: 100%
     .name
       margin: 0 0 24px
     .checkbox-wrapper
       display: flex
+      @media (max-width: 767px)
+        width: 100%
+        overflow-x: scroll
+        scrollbar-width: none
+        &::-webkit-scrollbar
+          display: none
       label
         display: flex
         margin: 0 10px 0 0

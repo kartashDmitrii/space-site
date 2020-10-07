@@ -38,6 +38,8 @@ body
   padding-top: calc(100px + 145px)
   box-sizing: border-box
   background: $body-background
+  @media (max-width: 1024px)
+    padding-top: 130px
   &.dark-theme
     background: #ffffff
   .background-circle

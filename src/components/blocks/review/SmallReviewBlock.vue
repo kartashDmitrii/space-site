@@ -30,8 +30,12 @@ export default {
   display: flex
   align-items: flex-start
   justify-content: space-between
+  @media (max-width: 767px)
+    flex-direction: column
   .time
     margin: 0 80px 0 0
+    @media (max-width: 767px)
+      margin: 0 0 15px
   .name
     text-decoration: none
     color: $white

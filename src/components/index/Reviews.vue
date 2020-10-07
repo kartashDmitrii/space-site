@@ -3,7 +3,7 @@
     <h5 class="title custom-grey-text">Агенция</h5>
     <div class="review-gid" :class="{'small-margin' : reviews.length % 2 === 0}">
       <div class="review-block" v-for="i in reviewsLength" :key="i">
-        <SmallReviewBlock v-if="i !== 2" :data=" i > 2 ? reviews[i-2] : reviews[i - 1]"></SmallReviewBlock>
+        <SmallReviewBlock v-if="i !== currentReviewPosition" :data=" i > currentReviewPosition ? reviews[i-2] : reviews[i - 1]"></SmallReviewBlock>
         <ReviewRating v-else></ReviewRating>
       </div>
     </div>
@@ -20,6 +20,10 @@ name: "Reviews",
   components: {CustomButton, ReviewRating, SmallReviewBlock},
   data(){
    return {
+     reviewPosition: {
+       0: 1,
+       1024: 2
+     },
      reviews: [
        {
          link: '#',
@@ -45,6 +49,17 @@ name: "Reviews",
   computed: {
     reviewsLength(){
       return this.reviews.length + 1
+    },
+    currentReviewPosition(){
+      let pos;
+      for (let width in this.reviewPosition){
+        if (screen.width >= width){
+          pos = this.reviewPosition[width]
+        } else {
+          return pos
+        }
+      }
+      return pos
     }
   }
 }
@@ -55,6 +70,9 @@ name: "Reviews",
   padding-bottom: 150px
   border-bottom: 1px solid $border-color
   margin-bottom: 150px
+  @media (max-width: 767px)
+    padding-bottom: 100px
+    margin-bottom: 100px
 .title
   margin: 0 0 80px
 .review-gid
@@ -65,9 +83,16 @@ name: "Reviews",
   grid-auto-rows: auto
   align-items: center
   margin-bottom: 165px
+  @media (max-width: 1365px)
+    grid-column-gap: 50px
+  @media (max-width: 1023px)
+    grid-template-columns: 100%
+  @media (max-width: 767px)
+    margin-bottom: 55px
   &.small-margin
     margin-bottom: 55px
   .review-block
-    &:nth-child(2n + 2):not(:nth-child(2))
-      transform: translateY(110px)
+    @media (min-width: 1024px)
+      &:nth-child(2n + 2):not(:nth-child(2))
+        transform: translateY(110px)
 </style>

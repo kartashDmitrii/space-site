@@ -35,6 +35,8 @@ export default {
     margin-right: 20px
     padding: 0 5px
     text-decoration: none
+    @media (max-width: 1366px)
+      margin-right: 10px
     &:last-child
       margin-right: 0
 </style>

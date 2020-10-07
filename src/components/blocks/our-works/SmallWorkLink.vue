@@ -27,6 +27,9 @@ export default {
       font-weight: 300
       font-size: 72px
       line-height: 94px
+      @media (max-width: 767px)
+        font-size: 41px
+        line-height: 53px
     .date
       margin: 14px 0 0 0
 </style>
