@@ -9,7 +9,7 @@
     </div>
     <div class="info-block">
       <CurrentTime/>
-      <div class="social">
+      <div class="social" v-if="!desktopVersion">
         <a href="#" class="link"><img src="@/assets/img/svg/dark-instagram.svg" alt=""></a>
         <a href="#" class="link"><img src="@/assets/img/svg/dark-facebook.svg" alt=""></a>
         <a href="#" class="link"><img src="@/assets/img/svg/dark-youtube.svg" alt=""></a>
@@ -29,7 +29,7 @@ export default {
   },
   data(){
     return {
-      images: ['top-banner.png','top-banner.png','top-banner.png','top-banner.png'],
+      images: ['top-banner.webp','top-banner.webp','top-banner.webp','top-banner.webp'],
       swiperOptions: {
         slidesPerView: 1,
         direction: 'vertical',

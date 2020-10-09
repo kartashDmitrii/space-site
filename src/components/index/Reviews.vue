@@ -29,19 +29,19 @@ name: "Reviews",
          link: '#',
          name: 'Отзыв от Ростислава Валихновского',
          time: '0:52',
-         image: 'video-1.png'
+         image: 'video-1.webp'
        },
        {
          link: '#',
          name: 'Отзыв от Ростислава Валихновского',
          time: '6:11',
-         image: 'video-2.png'
+         image: 'video-2.webp'
        },
        {
          link: '#',
          name: 'Отзыв от Ростислава Валихновского',
          time: '1:52',
-         image: 'video-3.png'
+         image: 'video-3.webp'
        },
      ]
    }

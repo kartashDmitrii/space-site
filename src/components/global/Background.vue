@@ -9,10 +9,10 @@ export default {
     window.addEventListener('resize', this.changeBackgroundCanvas)
   },
   mounted() {
-    document.body.addEventListener('mousemove', this.moveMouse)
     this.changeBackgroundCanvas();
     this.buildStars();
-    setInterval(this.drawStars, 20)
+    window.addEventListener('scroll', this.drawStars)
+    this.drawStars();
     this.$store.watch(
         (state) => state.DARK_THEME,
         (newValue) => {
@@ -29,8 +29,6 @@ export default {
   },
   data(){
     return{
-      xCord: '',
-      yCord: '',
       allStars: [],
     }
   },
@@ -81,12 +79,8 @@ export default {
         }
       }, 1000 / frameRate)
     },
-    moveMouse(event){
-      this.xCord = event.clientX
-      this.yCord = event.clientY
-    },
     buildStars(){
-      let starCount = this.$refs['background'].height / 15,
+      let starCount = this.$refs['background'].height / 30,
           y = this.$refs['background'].height,
           x = this.$refs['background'].width,
           maxSize = 7;
@@ -109,29 +103,11 @@ export default {
         ctx.beginPath()
         ctx.strokeStyle = '#403C3C';
         ctx.fillStyle = '#403C3C';
-        let fixX = this.allStars[i].x + ((this.allStars[i].size / 10) * ((this.xCord * 100) / window.screen.width)),
-            fixY = this.allStars[i].y + ((this.allStars[i].size / 10) * ((this.yCord * 100) / window.screen.height)),
-            fixSize = this.allStars[i].size,
-            innerRadius = this.allStars[i].size / 4,
-            spikes = 5,
-            rot = Math.PI / 2 * 3,
-            step = Math.PI / spikes
-        for (let j = 0; j < spikes; j++){
-          let x = fixX + Math.cos(rot) * fixSize;
-          let y = fixY + Math.sin(rot) * fixSize;
-          ctx.lineTo(x,y);
-          rot += step;
-
-          x = fixX + Math.cos(rot) * innerRadius;
-          y = fixY + Math.sin(rot) * innerRadius;
-          ctx.lineTo(x,y);
-          rot += step;
-        }
-        ctx.lineTo(fixX, fixY - fixSize);
+        let newY = this.allStars[i].y - (((this.allStars[i].size * 200) / 20) * ((document.documentElement.scrollTop * 100) / document.body.scrollHeight))
+        ctx.arc(this.allStars[i].x,newY, this.allStars[i].size, 0, 2 * Math.PI);
         ctx.closePath();
         ctx.stroke();
         ctx.fill();
-
       }
     }
   }

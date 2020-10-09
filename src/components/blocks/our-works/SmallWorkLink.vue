@@ -1,5 +1,5 @@
 <template>
-  <a class="work-link" :href="$props.link">
+  <a class="work-link" :href="$props.link" @mouseenter="$emit('mouseenter')" @mouseleave="$emit('mouseleave')">
     <h2 class="name">{{$props.name}}</h2>
     <p class="date custom-grey-text">{{$props.date}}</p>
   </a>

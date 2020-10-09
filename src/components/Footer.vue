@@ -41,7 +41,7 @@
           <Languages/>
         </div>
         <div class="partners">
-          <a href=""><img src="@/assets/img/google-partner.png" alt="tg"></a>
+          <a href=""><img src="@/assets/img/google-partner.webp" alt="tg"></a>
           <a href=""><img src="@/assets/img/facebook-partner.svg" alt="vb"></a>
         </div>
       </div>
