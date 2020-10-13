@@ -5,29 +5,23 @@
     </div>
     <div ref="our-works" class="our-works" @mouseenter="showFloatImage = true;" @mouseleave="showFloatImage = false">
       <SmallWorkLink
+          @mouseenter="$refs['our-works'].classList.add('faded')"
+          @mouseleave="$refs['our-works'].classList.remove('faded')"
           v-for="(work, i) in works" :name="work.name"
-          :date="work.date"
-          :link="work.link"
+          :payload = "work"
           :key="i"
-          @mouseenter="changeCurrentImage(work, i)"
       />
     </div>
     <CustomButton text="Смотреть все"/>
-    <transition name="float-image">
-      <FloatImage v-if="showFloatImage" :desc="works[currentElem].imageDesc"
-                  :image="works[currentElem].image"
-      />
-    </transition>
   </section>
 </template>
 
 <script>
 import SmallWorkLink from "@/components/blocks/our-works/SmallWorkLink";
 import CustomButton from "@/components/global/CustomButton";
-import FloatImage from "@/components/global/FloatImage";
 export default {
   name: "OurWorks",
-  components: {FloatImage, CustomButton, SmallWorkLink},
+  components: {CustomButton, SmallWorkLink},
   data(){
     return {
       currentElem: 1,
@@ -88,11 +82,7 @@ export default {
 }
 </script>
 
-<style scoped lang="sass">
-.float-image-enter-active, .float-image-leave-active
-  transition: opacity .5s
-.float-image-enter, .float-image-leave-to
-  opacity: 0
+<style lang="sass">
 .agency.container
   position: static
   margin-bottom: 150px
@@ -108,4 +98,18 @@ export default {
   display: flex
   flex-direction: column
   margin-bottom: 60px
+  &.faded
+    .work-link
+      &:not(.active)
+        .name,.date
+          color: #1d1b1b
+      &.active
+        .name
+          color: $white
+          &:after
+            width: 100%
+            left: 0
+            right: auto
+        .date
+          transform: translateY(-5px)
 </style>

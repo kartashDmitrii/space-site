@@ -1,32 +1,17 @@
 <template>
-  <div ref="float-image" class="float-image">
-    <div class="image">
-      <img v-if="oldImage !== ''" class="new-image" :src="require(`@/assets/img/${oldImage}`)" alt="">
+    <div ref="float-image" class="float-image">
+      <div class="image">
+        <img :src="require(`@/assets/img/${$props.image}`)" alt="123">
+      </div>
+      <p>{{ $props.desc }}</p>
     </div>
-    <p class="desc">
-      {{$props.desc}}
-    </p>
-  </div>
 </template>
 
 <script>
 export default {
-  props: ['image', 'desc'],
+  props: ['desc', 'image'],
   name: "FloatImage",
-  beforeUpdate() {
-    setTimeout( () => {
-      this.$refs['float-image'].querySelector('.image .new-image').style.transition = 'none';
-      this.$refs['float-image'].querySelector('.image .new-image').style.transform = 'scale(1)';
-      this.$refs['float-image'].querySelector('.image .new-image').style.transition = 'all .3s';
-      this.$refs['float-image'].querySelector('.image .new-image').style.transform = 'scale(0)';
-      setTimeout( () => {
-        this.oldImage = this.$props.image
-        this.$refs['float-image'].querySelector('.image .new-image').style.transform = 'scale(1)';
-      }, 300)
-    })
-  },
-  mounted() {
-    this.oldImage = this.$props.image
+  created() {
     window.addEventListener('mousemove', this.moveImage)
   },
   destroyed() {
@@ -34,44 +19,42 @@ export default {
   },
   data(){
     return {
-      oldImage: ''
     }
   },
   methods: {
     moveImage(event){
-      let image = this.$refs['float-image'].querySelector('.image'),
-          xMaxMove = 500,
-          yMaxMove = 700
-
-      let xMove = Math.round(xMaxMove / ((event.clientX * 100) / window.screen.width));
-      let yMove = Math.round(yMaxMove / ((event.clientY * 100) / window.screen.height));
-      image.style.transform = `translate3d(-${xMove}px, -${yMove}px, 0)`
+      let image = this.$refs['float-image'].querySelector('.image');
+      let maxXStep = 100;
+      let maxYStep = 50;
+      let currX = Math.abs(event.screenX);
+      let currY = event.screenY;
+      let x = Math.round((currX / Math.abs(screen.width)) * maxXStep)
+      let y = Math.round((currY / screen.height) * maxYStep)
+      console.log(x,y)
+      image.style.setProperty('transform',`translate3d(-${x}px, ${y}px, 0)`)
     }
   }
 }
 </script>
 
-<style scoped lang="sass">
-.float-image
-  position: fixed
-  bottom: 200px
-  right: 250px
-  user-select: none
-  pointer-events: none
-  .image
-    position: relative
-    .new-image
-      transition: all .3s
+<style lang="sass">
+  .float-image
+    position: fixed
+    bottom: 110px
+    right: 200px
+    z-index: 11
+    user-select: none
+    pointer-events: none
+    .image
       position: relative
-      z-index: 1
-  .desc
-    width: 50%
-    position: absolute
-    top: calc(100% - 50px)
-    right: 0
-    transform: translateX(50%)
-    font-size: 24px
-    font-weight: 300
-    line-height: 28px
-    margin: 0
+      overflow: hidden
+      img
+        display: inline-block
+        transition: all .3s
+    p
+      position: absolute
+      bottom: 0
+      right: 0
+      transform: translate(50%, 50%)
+      width: 50%
 </style>
